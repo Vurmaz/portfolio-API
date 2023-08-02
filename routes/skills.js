@@ -7,25 +7,11 @@ const path = require('path')
 const { StatusCodes } = require('http-status-codes')
 const { BadRequestError } = require('../errors/index')
 
-const { getSkills, deleteSkill } = require('../controllers/skill')
+const { getSkills, createSkill, deleteSkill } = require('../controllers/skill')
 
 router.route('/').get(getSkills)
 
-router.post('/create', upload.single('skill'), async function(req, res, next) {
-    const createObject = {
-        name:req.body.name,
-        image:{
-            data: fs.readFileSync(path.join(__dirname, '.' ,  '../uploads/' , req.file.filename)),
-            contentType: 'image/png'
-        }
-    }
-    const newSkill = await Skill.create(createObject)
-
-    if(!newSkill) {
-        throw new BadRequestError('Skill cannot created')
-    }
-    res.status(StatusCodes.CREATED).json({ newSkill })
-})
+router.route('/create').post(createSkill)
 
 router.route('/:id').delete(deleteSkill)
 

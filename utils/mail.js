@@ -5,16 +5,15 @@ async function mail(req) {
         service:'gmail',
         auth:{
             user:'sadikvurmaz@gmail.com',
-            pass:'slnryusjkfwgxdav'
+            pass:process.env.MAILER
         }
-    })
-
+    })    
     let options = {
-        from:req.body.sender,
+        from:req.body.data.email,
         to:'sadikvurmaz@gmail.com',
-        subject:req.body.subject,
-        text:req.body.text,
-    }
+        subject:req.body.data.name,
+        text:`${req.body.data.email}  ${req.body.data.message}`,
+    }    
     await transporter.sendMail(options)
 }
 

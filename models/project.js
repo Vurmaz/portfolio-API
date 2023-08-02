@@ -10,9 +10,6 @@ const ProjectSchema = new mongoose.Schema({
     url:{
         type:String
     },
-    gif:{
-        type:String
-    },
     desc:{
         type:String
     }

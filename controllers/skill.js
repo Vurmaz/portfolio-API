@@ -6,6 +6,14 @@ const getSkills = async(req, res) => {
     res.status(StatusCodes.OK).json({ skills })
 }
 
+const createSkill = async(req, res) => {
+    const skill = await Skill.create(req.body)
+    if(!skill) {
+        throw new BadRequestError('Skill cannot created')
+    }
+    res.status(StatusCodes.CREATED).json({ skill })    
+}
+
 const deleteSkill = async(req, res) => {
     const id = req.params.id
     const skill = await Skill.findOneAndDelete({ _id:id })
@@ -15,5 +23,4 @@ const deleteSkill = async(req, res) => {
     res.status(StatusCodes.OK).json({ skill })
 }
 
-
-module.exports =  { getSkills, deleteSkill }
+module.exports =  { getSkills, createSkill, deleteSkill }

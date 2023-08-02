@@ -1,9 +1,9 @@
 const Project = require('../models/project')
 const { StatusCodes } = require('http-status-codes')
 
-
 const getProjects = async(req, res) => {
     const projects = await Project.find({})
+    console.log(projects)
     res.status(StatusCodes.OK).json({ projects })
 }
 
@@ -22,7 +22,6 @@ const deleteProject = async(req, res) => {
     }
     res.status(StatusCodes.OK).json({ message:'Project has been deleted' })
 }
-
 
 
 module.exports = { getProjects, createProject, deleteProject }

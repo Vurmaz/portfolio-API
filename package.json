@@ -1,13 +1,12 @@
 {
-  "name": "server",
+  "name": "portfolio API",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sadık Vurmaz's portfolio API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "author": "",
+  "author": "Sadık Vurmaz",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",

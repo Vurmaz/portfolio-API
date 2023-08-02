@@ -15,7 +15,7 @@ const rateLimiter = require("express-rate-limit")
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://sadikvurmaz.com",
     credentials: true,
   })
 )
@@ -29,7 +29,6 @@ app.use(
 app.use(helmet())
 app.use(xss())
 
-
 const skillRouter = require('./routes/skills')
 const projectRouter = require('./routes/projects')
 const contactRouter = require('./routes/contact')
@@ -41,7 +40,6 @@ app.get('/', (req, res) => {
 app.use('/skill', skillRouter)
 app.use('/project', projectRouter)
 app.use('/contact', contactRouter)
-
 
 const errorHandlerMiddleware = require("./middlewares/error-handlers")
 const notFound = require("./middlewares/not-found")

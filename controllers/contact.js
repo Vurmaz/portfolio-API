@@ -7,6 +7,5 @@ const sendEmail = (req, res) => {
     res.status(StatusCodes.OK).json({ message : 'Mail sended' })
 }
 
-
 module.exports = { sendEmail }
 
